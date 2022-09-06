@@ -678,14 +678,12 @@ namespace MiniExcelLibs.OpenXml
                         if (v != null && v.StartsWith("@@@fileid@@@,",StringComparison.Ordinal))
                         {
                             var path = v.Substring(13);
-                            var stream = _archive.GetEntry(path).Open();
-                            byte[] bytes;
-                            using (var ms = new MemoryStream())
+                            using (var stream = _archive.GetEntry(path).Open())
                             {
-                                stream.CopyTo(ms);
-                                bytes = ms.ToArray();
+                                byte[] bytes = new byte[stream.Length];
+                                stream.Read(bytes, 0, bytes.Length);
+                                value = bytes;
                             }
-                            value = bytes;
                         }
                         else
                         {
