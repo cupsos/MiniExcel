@@ -16,7 +16,7 @@
             unknown
         }
 
-#if NET45||NETSTANDARD2_0
+#if !(NETSTANDARD2_1 || NETCOREAPP2_1_OR_GREATER)
         public static ImageFormat GetImageFormat(byte[] bytes)
         {
             byte[] bmp = new byte[] { (byte)'B', (byte)'M' };            // BMP
@@ -50,9 +50,7 @@
 
             return ImageFormat.unknown;
         }
-#endif
-
-#if  NET5_0
+#else
         public static ImageFormat GetImageFormat(ReadOnlySpan<byte> bytes)
         {
             ReadOnlySpan<byte> bmp = stackalloc byte[] { (byte)'B', (byte)'M' };            // BMP
