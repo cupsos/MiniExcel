@@ -15,9 +15,8 @@ namespace MiniExcelLibs.Benchmarks
 #if DEBUG
             new XlsxBenchmark().Epplus_QueryFirst_Test();
 #else
-            BenchmarkSwitcher.FromTypes(new[]{typeof(XlsxBenchmark)}).Run(args, new Config());
+            BenchmarkSwitcher.FromTypes(new[] { typeof(XlsxBenchmark) }).Run(args);
 #endif
-            Console.Read();
         }
     }
 }

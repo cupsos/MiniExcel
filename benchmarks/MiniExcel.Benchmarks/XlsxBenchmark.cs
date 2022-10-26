@@ -13,6 +13,11 @@ using OfficeOpenXml;
 
 namespace MiniExcelLibs.Benchmarks
 {
+    [MemoryDiagnoser]
+    [IterationCount(3)]
+    [ProcessCount(1)]
+    [WarmupCount(2)]
+    [Orderer(BenchmarkDotNet.Order.SummaryOrderPolicy.FastestToSlowest)]
     public class XlsxBenchmark : BenchmarkBase
     {
         [GlobalSetup]
